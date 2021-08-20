@@ -9,6 +9,7 @@ Lets you toggle a line highlight for any line.
 1. Map your preferred key sequence to the toggle function.  For example:
 >
   nmap <Leader>h <Plug>(HighlineToggle)
+  xmap <Leader>h <Plug>(HighlineToggle)
 <
 
 2. Optionally define the |hl-Highline| highlight (by default it links to |hl-Visual|):

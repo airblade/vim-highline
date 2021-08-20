@@ -25,6 +25,7 @@ Map a key sequence, for example `<Leader>h`, to the toggle function:
 
 ```viml
 nmap <Leader>h <Plug>(HighlineToggle)
+xmap <Leader>h <Plug>(HighlineToggle)
 ```
 
 The highlight used is defined by the `Highline` group which by default links to `Visual`.  Feel free to link it to a different group or define your own colours, in your vimrc / init.vim.  For example:

@@ -18,3 +18,4 @@ function! <SID>toggle()
 endfunction
 
 nnoremap <silent> <Plug>(HighlineToggle) :call <SID>toggle()<CR>
+xnoremap <silent> <Plug>(HighlineToggle) :call <SID>toggle()<CR>
