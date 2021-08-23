@@ -12,7 +12,7 @@ the highlights are characterwise.
 >
   nmap <Leader>h <Plug>(HighlineToggle)
   xmap <Leader>h <Plug>(HighlineToggle)
-  nmap <Leader>h <Plug>(HighlineClear)
+  nmap <Leader>c <Plug>(HighlineClear)
 <
 
 2. Optionally define the |hl-Highline| highlight (by default it links to |hl-Visual|):
