@@ -3,13 +3,16 @@
 Author: Andrew Stewart <https://airbladesoftware.com>
 Licence: MIT
 
-Lets you toggle a line highlight for any line.
+This tiny Vim plugin lets you toggle a highlight.  In normal mode and linewise
+visual mode the highlights are toggled linewise.  In characterwise visual mode
+the highlights are characterwise.
 
 
 1. Map your preferred key sequence to the toggle function.  For example:
 >
   nmap <Leader>h <Plug>(HighlineToggle)
   xmap <Leader>h <Plug>(HighlineToggle)
+  nmap <Leader>h <Plug>(HighlineClear)
 <
 
 2. Optionally define the |hl-Highline| highlight (by default it links to |hl-Visual|):
