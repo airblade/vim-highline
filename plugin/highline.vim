@@ -33,11 +33,7 @@ endfunction
 
 " Removes highline highlights from the current buffer.
 function! <SID>clear()
-  let p = prop_find({'type': 'highline', 'lnum': 1})
-  while !empty(p)
-    call prop_remove({'type': 'highline'}, p.lnum)
-    let p = prop_find({'type': 'highline', 'lnum': p.lnum})
-  endwhile
+  call prop_remove({'type': 'highline'})
 endfunction
 
 nnoremap <silent> <Plug>(HighlineToggle) :call <SID>toggle('n')<CR>
