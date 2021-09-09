@@ -9,14 +9,47 @@ highlight default link Highline Visual
 call prop_type_add('highline', {'highlight': 'Highline', 'combine': v:true})
 
 " Toggles a highline highlight.
-function! <SID>toggle(mode)
-  if a:mode == 'n'
+function! <SID>toggle()
+  let mode = mode(1)
+  if mode == 'n'
     let [line_start, column_start] = [line('.'), 1]
     let [line_end,   column_end]   = [line('.'), col('$')]
-  else
-    let [line_start, column_start] = getpos("'<")[1:2]
-    let [line_end,   column_end]   = getpos("'>")[1:2]
-    let column_end = min([column_end, col([line_end, '$'])])
+  elseif mode == 'v'
+    let [line_cursor,   column_cursor]   = [line('.'), col('.')]
+    let [line_opposite, column_opposite] = [line('v'), col('v')]
+
+    if line_cursor < line_opposite
+      let [line_start, column_start] = [line_cursor, column_cursor]
+      let [line_end,   column_end]   = [line_opposite, column_opposite]
+    elseif line_cursor == line_opposite
+      let [line_start, line_end] = [line_cursor, line_cursor]
+      if column_cursor < column_opposite
+        let [column_start, column_end] = [column_cursor, column_opposite]
+      else
+        let [column_start, column_end] = [column_opposite, column_cursor]
+      endif
+    elseif line_cursor > line_opposite
+      let [line_start, column_start] = [line_opposite, column_opposite]
+      let [line_end,   column_end]   = [line_cursor, column_cursor]
+    endif
+
+    normal! v
+  elseif mode == 'V'
+    let [line_cursor,   column_cursor]   = [line('.'), col('.')]
+    let [line_opposite, column_opposite] = [line('v'), col('v')]
+
+    if line_cursor < line_opposite
+      let [line_start, column_start] = [line_cursor, 1]
+      let [line_end,   column_end]   = [line_opposite, strlen(getline(line_opposite))]
+    elseif line_cursor == line_opposite
+      let [line_start, column_start] = [line_cursor, 1]
+      let [line_end,   column_end]   = [line_opposite, col('$')]
+    elseif line_cursor > line_opposite
+      let [line_start, column_start] = [line_opposite, 1]
+      let [line_end,   column_end]   = [line_cursor, col('$')]
+    endif
+
+    normal! V
   endif
 
   " Remove highline highlight if detected and return.
@@ -36,7 +69,7 @@ function! <SID>clear()
   call prop_remove({'type': 'highline'})
 endfunction
 
-nnoremap <silent> <Plug>(HighlineToggle) :call <SID>toggle('n')<CR>
-xnoremap <silent> <Plug>(HighlineToggle) :<C-U>call <SID>toggle('x')<CR>
+nnoremap <silent> <Plug>(HighlineToggle) <Cmd>call <SID>toggle()<CR>
+xnoremap <silent> <Plug>(HighlineToggle) <Cmd>call <SID>toggle()<CR>
 
-nnoremap <silent> <Plug>(HighlineClear) :call <SID>clear()<CR>
+nnoremap <silent> <Plug>(HighlineClear) <Cmd>call <SID>clear()<CR>
