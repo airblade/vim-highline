@@ -8,7 +8,6 @@ highlight default link Highline Visual
 
 if has('nvim')
   let s:namespace = nvim_create_namespace('highline')
-  echom 'namespace' s:namespace
 else
   call prop_type_add('highline', {'highlight': 'Highline', 'combine': v:true})
 endif
