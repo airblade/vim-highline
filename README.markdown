@@ -1,6 +1,6 @@
 # vim-highline
 
-This tiny Vim plugin lets you toggle a highlight.  In normal mode and linewise visual mode the highlights are toggled linewise.  In characterwise visual mode the highlights are characterwise.
+This tiny Vim/Neovim plugin lets you toggle a highlight.  In normal mode and linewise visual mode the highlights are toggled linewise.  In characterwise visual mode the highlights are characterwise.
 
 Highights will stay with their text if lines earlier in the buffer are inserted or deleted.
 
@@ -33,6 +33,11 @@ The highlight used is defined by the `Highline` group which by default links to 
 
 ```viml
 highlight link Highline Pmenu
+```
+
+– or:
+
+```viml
 highlight Highline guibg=#444444
 ```
 

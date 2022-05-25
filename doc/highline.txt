@@ -3,9 +3,9 @@
 Author: Andrew Stewart <https://airbladesoftware.com>
 Licence: MIT
 
-This tiny Vim plugin lets you toggle a highlight.  In normal mode and linewise
-visual mode the highlights are toggled linewise.  In characterwise visual mode
-the highlights are characterwise.
+This tiny Vim/Neovim plugin lets you toggle a highlight.  In normal mode and
+linewise visual mode the highlights are toggled linewise.  In characterwise
+visual mode the highlights are characterwise.
 
 
 1. Map your preferred key sequence to the toggle function.  For example:
@@ -17,7 +17,9 @@ the highlights are characterwise.
 
 2. Optionally define the |hl-Highline| highlight (by default it links to |hl-Visual|):
 >
+  " Either:
   highlight link Highline Pmenu
+  " Or:
   highlight Highline guibg=#444444
 <
 
